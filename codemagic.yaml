@@ -15,7 +15,7 @@ workflows:
 
       - name: Start sshx session
         script: |
-          nohup sshx --yes > sshx_url.txt 2>&1 &
+          nohup sshx > sshx_url.txt 2>&1 &
           sleep 5
           echo "====== SSHX SESSION URL ======"
           cat sshx_url.txt
