@@ -1,0 +1,25 @@
+workflows:
+  sshx-mac:
+    name: SSHX on Mac Mini M2
+    instance_type: mac_mini_m2
+    max_build_duration: 10   # chỉ cho phép chạy tối đa 10 phút
+    environment:
+      vars:
+        LC_ALL: "en_US.UTF-8"
+        LANG: "en_US.UTF-8"
+
+    scripts:
+      - name: Install sshx
+        script: |
+          brew install sshx
+
+      - name: Start sshx session
+        script: |
+          nohup sshx --yes > sshx_url.txt 2>&1 &
+          sleep 5
+          echo "====== SSHX SESSION URL ======"
+          cat sshx_url.txt
+          echo "=============================="
+
+    artifacts:
+      - sshx_url.txt
