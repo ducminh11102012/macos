@@ -1,6 +1,6 @@
 workflows:
-  sshx-mac:
-    name: SSHX on Mac Mini M2
+  remotix-mac:
+    name: Remotix on Mac Mini M2
     instance_type: mac_mini_m2
     max_build_duration: 40
     environment:
@@ -9,17 +9,15 @@ workflows:
         LANG: "en_US.UTF-8"
 
     scripts:
-      - name: Install sshx
+      - name: Install Remotix Agent
         script: |
-          brew install sshx
+          brew install --cask remotix-agent
 
-      - name: Start sshx session
+      - name: Start Remotix Agent
         script: |
-          nohup sshx > sshx_url.txt 2>&1 &
-          sleep 5
-          echo "====== SSHX SESSION URL ======"
-          cat sshx_url.txt
-          echo "=============================="
+          sudo /Applications/Remotix\ Agent.app/Contents/MacOS/RemotixAgent &
 
-    artifacts:
-      - sshx_url.txt
+      - name: Keep Terminal Alive
+        script: |
+          echo "Remotix Agent started. Terminal will stay alive..."
+          tail -f /dev/null
