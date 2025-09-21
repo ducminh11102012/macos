@@ -2,7 +2,7 @@ workflows:
   sshx-mac:
     name: SSHX on Mac Mini M2
     instance_type: mac_mini_m2
-    max_build_duration: 10   # chỉ cho phép chạy tối đa 10 phút
+    max_build_duration: 40
     environment:
       vars:
         LC_ALL: "en_US.UTF-8"
