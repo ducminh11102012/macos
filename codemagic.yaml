@@ -6,7 +6,6 @@ workflows:
       vars:
         CI: "true"
     macos:
-      xcode: latest
       image: mac-mini-m2
     scripts:
       - name: Install Google Chrome
