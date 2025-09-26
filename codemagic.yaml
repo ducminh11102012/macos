@@ -1,10 +1,8 @@
 workflows:
   mac_mini_workflow:
-    name: "Mac Mini M2 CI"
-    max_build_duration: 40
-    macos:
-      xcode: latest
-      image: mac-mini-m2
+    name: Mac Mini M2 CI
+    max_build_duration: 40          # số nguyên, phút
+    instance_type: mac_mini_m2      # định nghĩa máy Mac
     environment:
       vars:
         CI: "true"
@@ -12,7 +10,7 @@ workflows:
       - name: Install Google Chrome
         script: |
           brew install --cask google-chrome
-      - name: Launch Terminal & Keep Alive
+      - name: Keep terminal alive
         script: |
           echo "Chrome installed. Keeping session alive..."
           tail -f /dev/null
