@@ -1,16 +1,18 @@
 workflows:
-  remotix-mac:
-    name: Remotix on Mac Mini M2
-    instance_type: mac_mini_m2
-    max_build_duration: 40
+  mac_mini_workflow:
+    name: "Mac Mini M2 CI"
+    max_build_duration: 40m
     environment:
       vars:
-        LC_ALL: "en_US.UTF-8"
-        LANG: "en_US.UTF-8"
-
+        CI: "true"
+    macos:
+      xcode: latest
+      image: mac-mini-m2
     scripts:
-
-      - name: Keep Terminal Alive
+      - name: Install Google Chrome
         script: |
-          echo "Remotix Agent started. Terminal will stay alive..."
+          brew install --cask google-chrome
+      - name: Launch Terminal & Keep Alive
+        script: |
+          echo "Chrome installed. Keeping session alive..."
           tail -f /dev/null
