@@ -9,13 +9,6 @@ workflows:
         LANG: "en_US.UTF-8"
 
     scripts:
-      - name: Install Remotix Agent
-        script: |
-          brew install --cask remotix-agent
-
-      - name: Start Remotix Agent
-        script: |
-          sudo /Applications/Remotix\ Agent.app/Contents/MacOS/RemotixAgent &
 
       - name: Keep Terminal Alive
         script: |
