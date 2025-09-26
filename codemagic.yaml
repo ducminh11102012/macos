@@ -1,7 +1,13 @@
 workflows:
   mac_mini_workflow:
     name: "Mac Mini M2 CI"
-    max_build_duration: 40m
+    max_build_duration: 40       # chỉ số nguyên phút, không có "m"
+    environment:
+      vars:
+        CI: "true"
+    macos:
+      xcode: latest
+      image: mac-mini-m2
     scripts:
       - name: Install Google Chrome
         script: |
